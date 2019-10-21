@@ -1,15 +1,17 @@
 package cn.xutingyin.mybatisplus.service.impl;
 
-import cn.xutingyin.mybatisplus.entity.Paper;
+import cn.xutingyin.mybatisplus.dto.PaperDto;
 import cn.xutingyin.mybatisplus.mapper.PaperMapper;
 import cn.xutingyin.mybatisplus.service.IPaperService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-
+/** 
+* @Description: 图书业务实现层
+* @Author: xuty 
+* @Date: 2019/10/21 16:00
+*/
 @Service
 public class PaperServiceImpl implements IPaperService {
 
@@ -17,10 +19,8 @@ public class PaperServiceImpl implements IPaperService {
     private PaperMapper paperMapper;
 
     @Override
-    public List<Paper> selectByCondition(Paper p) {
-        QueryWrapper<Paper> wrapper = new QueryWrapper();
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        wrapper.lambda().ge(Paper::getCreateTime,p.getCreateTime().format(df));
-        return paperMapper.selectList(wrapper);
+    public IPage<PaperDto> selectByCondition(PaperDto paperDto) {
+        IPage<PaperDto> page = paperMapper.listPaper(paperDto.getPage(), paperDto);
+        return page;
     }
 }
