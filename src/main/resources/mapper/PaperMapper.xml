@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xutingyin.mybatisplus.mapper.PaperMapper">
+    <select id="listPaper" resultType="cn.xutingyin.mybatisplus.dto.PaperDto">
+        select  * from tb_paper where 1 = 1
+        <if test="paperDto.pageId != null and paperDto.pageId != ''">
+          and  page_id = #{paperDto.pageId}
+        </if>
+        <if test="paperDto.name != null and paperDto.name != ''">
+          and  name = #{paperDto.name}
+        </if>
+        <if test="paperDto.pageId != null and paperDto.pageId != ''">
+          and  create_time >= DATE_FORMAT(#{paperDto.createTime},'%Y-%m-%d')
+        </if>
+    </select>
+</mapper>
