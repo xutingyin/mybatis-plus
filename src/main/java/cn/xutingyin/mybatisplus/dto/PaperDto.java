@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class PaperDto  implements Serializable {
-    private  Integer pageId;
+    private  String pageId;
     /**
      *书籍名称
      */
