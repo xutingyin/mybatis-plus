@@ -10,11 +10,9 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-import sun.util.resources.LocaleData;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @Description: 图书实体类
@@ -25,12 +23,11 @@ import java.util.Date;
 @Data
 @TableName("tb_paper")
 public class Paper implements Serializable {
-    public Paper(){};
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ID_WORKER_STR)
     /**
      *自增ID
      */
-    private  Integer pageId;
+    private  String pageId;
     /**
      *书籍名称
      */
