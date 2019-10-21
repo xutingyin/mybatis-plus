@@ -2,6 +2,7 @@ package cn.xutingyin.mybatisplus.dto;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -46,6 +47,9 @@ public class PaperDto  implements Serializable {
 
     /**
      * 分页对象
+     * JsonInclude.Include.NON_NULL ：
+     * 此注解的作用就是实体转json，属性值为NULL或者为空时，该属性不参与序列化。
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Page page;
 }
